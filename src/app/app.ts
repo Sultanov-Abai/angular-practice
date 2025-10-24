@@ -8,5 +8,20 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App {
+
   protected readonly title = signal('angular-practice');
+
+  data = {
+    title: "angular-practice"
+  };
+
+  onLogoClicked() {
+  alert('Hello World!');
+  }
+
+  onKeyUp(newTitle:string) {
+    this.data.title = newTitle;
+  }
+
 }
+
