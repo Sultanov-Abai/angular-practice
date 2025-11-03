@@ -1,0 +1,44 @@
+<h1>Welcome to {{ hotelName }}</h1>
+<div [hidden]="hideRooms">
+    Number of rooms:
+    <div [innerText]="numberOfRooms"></div>
+</div> 
+
+<!-- {{  rooms.availableRooms ?? 'No rooms available' }} -->
+
+<!-- {{ roomList | json }} -->
+
+@if (rooms.availableRooms > 0) {
+    <div>List of Rooms</div>
+    <table>
+        <tr>
+            <th>Room Number</th>
+            <th>Even/Odd</th>
+            <th>Room Type</th>
+            <th>Room Price</th>
+            <th>Room Amentities</th>
+            <th>Chekin Time</th>
+            <th>Checkout Time</th>
+            <th>rating</th>
+        </tr>
+        @for (room of roomList | slice : 0:3 ; track room.roomNumber; let e = $even; let o = $odd; let i = $index) {
+            <tr [class]="e ? 'even' : 'odd' " >
+                <td>{{ room.roomNumber }}</td>
+                <td>{{ e ? "Even" : "Odd " }}</td>
+                <td>{{ room.roomType }}</td>
+                <td>{{ room.price  | currency : 'JPY'}}</td>
+                <td>{{ room.amentities }}</td>
+                <td>{{ room.checkInTime | date : 'short' }}</td>
+                <td>{{ room.checkOutTime | date : 'short' }}</td>
+                <td>{{ room.rating | number : '1.1-2'}}</td>
+            </tr>
+        }
+    </table>
+}
+@else {
+    <div></div>
+}
+
+
+
+<button (click)="toggle()">Toggle</button>

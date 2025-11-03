@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Rooms, RoomsComponent } from "./rooms/rooms";
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
+  selector: 'practice-root',
+  imports: [RouterOutlet, RoomsComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -15,13 +16,5 @@ export class App {
     title: "angular-practice"
   };
 
-  onLogoClicked() {
-  alert('Hello World!');
-  }
-
-  onKeyUp(newTitle:string) {
-    this.data.title = newTitle;
-  }
-
+  role = 'admin';
 }
-

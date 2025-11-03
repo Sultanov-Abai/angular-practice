@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "practice",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -30,7 +30,11 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",  // ← ADD THIS
+              "src/styles.scss"  // ← Keep your existing styles
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"  // ← ADD THIS
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -93,7 +97,11 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/scss/css/bootstrap.min.css",  
               "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"  // ← ADD FOR TESTS TOO
             ]
           }
         }
