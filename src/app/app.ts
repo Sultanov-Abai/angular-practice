@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Rooms, RoomsComponent } from "./rooms/rooms";
+import { RoomsComponent } from "./rooms/rooms";
+import { Rooms } from './rooms/room-interfaces';
 
 @Component({
   selector: 'practice-root',

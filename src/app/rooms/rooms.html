@@ -8,36 +8,20 @@
 
 <!-- {{ roomList | json }} -->
 
+@if (selectedRoom) {
+    <div>
+        {{ selectedRoom | json }}
+    </div>
+}
+
 @if (rooms.availableRooms > 0) {
-    <div>List of Rooms</div>
-    <table>
-        <tr>
-            <th>Room Number</th>
-            <th>Even/Odd</th>
-            <th>Room Type</th>
-            <th>Room Price</th>
-            <th>Room Amentities</th>
-            <th>Chekin Time</th>
-            <th>Checkout Time</th>
-            <th>rating</th>
-        </tr>
-        @for (room of roomList | slice : 0:3 ; track room.roomNumber; let e = $even; let o = $odd; let i = $index) {
-            <tr [class]="e ? 'even' : 'odd' " >
-                <td>{{ room.roomNumber }}</td>
-                <td>{{ e ? "Even" : "Odd " }}</td>
-                <td>{{ room.roomType }}</td>
-                <td>{{ room.price  | currency : 'JPY'}}</td>
-                <td>{{ room.amentities }}</td>
-                <td>{{ room.checkInTime | date : 'short' }}</td>
-                <td>{{ room.checkOutTime | date : 'short' }}</td>
-                <td>{{ room.rating | number : '1.1-2'}}</td>
-            </tr>
-        }
-    </table>
-}
-@else {
-    <div></div>
-}
+    <practice-rooms-list [rooms]="roomList"
+                         (selectedRoom)="selectRoom($event)"   
+    ></practice-rooms-list>
+    }
+    @else {
+        <div></div>
+    }
 
 
 
